@@ -1,0 +1,1820 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="lecture4_files/libs/clipboard/clipboard.min.js"></script>
+<script src="lecture4_files/libs/quarto-html/tabby.min.js"></script>
+<script src="lecture4_files/libs/quarto-html/popper.min.js"></script>
+<script src="lecture4_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="lecture4_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="lecture4_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="lecture4_files/libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.37">
+
+  <title>lecture4</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="lecture4_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="lecture4_files/libs/revealjs/dist/reveal.css">
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="lecture4_files/libs/revealjs/dist/theme/quarto-2740581606dc327e82f18f789b69d8a0.css">
+  <link rel="stylesheet" href="styles.css">
+  <link href="lecture4_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="lecture4_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="lecture4_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="lecture4_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+
+<section id="spatial-data-analysis" class="slide level2 title-slide-low">
+<h2>Spatial Data Analysis</h2>
+<h3 id="applied-spatial-workflows">Applied spatial workflows</h3>
+<p>Sant’Anna School of Advanced Studies</p>
+<p><strong>Matteo Coronese</strong><br>
+m.coronese@santannapisa.it</p>
+<p>June 2026</p>
+</section>
+<section id="what-will-we-learn-in-this-course" class="slide level2">
+<h2>What will we learn in this course?</h2>
+<h3 id="lecture-1---spatial-data-basics">Lecture 1 - Spatial data basics</h3>
+<h3 id="lecture-2-operating-with-spatial-datasets">Lecture 2 — Operating with spatial datasets</h3>
+<h3 id="lecture-3-elements-of-spatial-dependence-and-econometrics">Lecture 3 — Elements of spatial dependence and econometrics</h3>
+<h3 id="lecture-4-applied-spatial-workflows">Lecture 4 — Applied spatial workflows</h3>
+<ul>
+<li>Exposure variables</li>
+<li>Temporal and spatial harmonization</li>
+<li>Raster-vector interactions</li>
+<li>Panel construction</li>
+<li>Climate econometrics</li>
+</ul>
+</section>
+<section id="first-things-first-get-the-data" class="slide level2">
+<h2>First things first: get the data!</h2>
+<p>Go to https://l1nk.dev/tvfd8zx</p>
+</section>
+<section id="from-global-rasters-to-econometric-panels" class="slide level2">
+<h2>From global rasters to econometric panels</h2>
+<p>Working with spatial data often requires much more than simply fitting a regression model.</p>
+<p>Researchers routinely need to:</p>
+<ul>
+<li>combine multiple spatial datasets;</li>
+<li>harmonize different grids and resolutions;</li>
+<li>aggregate information over administrative units;</li>
+<li>define meaningful weighting schemes;</li>
+<li>construct variables suitable for statistical analysis.</li>
+</ul>
+<p>The exact workflow depends on the research question, but these operations appear repeatedly across many disciplines.</p>
+<p>One of the most common tasks is the construction of an <strong>exposure variable</strong>.</p>
+</section>
+<section id="what-is-an-exposure-variable" class="slide level2">
+<h2>What is an exposure variable?</h2>
+<div class="smaller">
+<blockquote>
+<p>An <strong>exposure variable</strong> quantifies how much an observational unit is exposed to a spatial phenomenon.</p>
+</blockquote>
+<p>Examples:</p>
+<div class="super-smaller">
+<table class="caption-top">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 35%">
+<col style="width: 47%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Unit</th>
+<th>Spatial phenomenon</th>
+<th>Exposure variable</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Country</td>
+<td>Temperature</td>
+<td>Population-weighted temperature</td>
+</tr>
+<tr class="even">
+<td>Municipality</td>
+<td>PM2.5</td>
+<td>Population exposure to pollution</td>
+</tr>
+<tr class="odd">
+<td>Household</td>
+<td>Flood hazard</td>
+<td>Flood risk</td>
+</tr>
+<tr class="even">
+<td>Region</td>
+<td>Transport infrastructure</td>
+<td>Market accessibility</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="height:1em;">
+
+</div>
+<p>Exposure variables are rarely directly observed.</p>
+<p>Instead, they are <strong>constructed</strong> by combining spatial information with aggregation rules and weighting schemes.</p>
+<div class="columns middle">
+<div class="column" style="width:50%;">
+<ul>
+<li><p><strong>Case study:</strong> Burke, Hsiang &amp; Miguel (<em>Nature</em>, 2015)</p></li>
+<li><p>A highly influential paper in climate economics that uses spatial data to estimate the effect of temperature on economic growth.</p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<center>
+<p><img src="burke.png" width="100%"></p>
+</center>
+</div></div>
+</div>
+</section>
+<section id="a-general-workflow" class="slide level2">
+<h2>A general workflow</h2>
+<div style="margin-top:-5em;">
+
+</div>
+<div style="zoom:1.7">
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<svg width="960" height="480" viewbox="0.00 0.00 1332.32 263.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(0.972222 0.972222) rotate(0) translate(4 259)">
+<title>workflow</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-259 1328.32,-259 1328.32,4 -4,4"></polygon>
+<!-- era5 -->
+<g id="node1" class="node">
+<title>era5</title>
+<path fill="#b3d9ff" stroke="black" stroke-width="2" d="M125.51,-255C125.51,-255 12.16,-255 12.16,-255 6.16,-255 0.16,-249 0.16,-243 0.16,-243 0.16,-211 0.16,-211 0.16,-205 6.16,-199 12.16,-199 12.16,-199 125.51,-199 125.51,-199 131.51,-199 137.51,-205 137.51,-211 137.51,-211 137.51,-243 137.51,-243 137.51,-249 131.51,-255 125.51,-255"></path>
+<text text-anchor="middle" x="68.83" y="-233" font-family="Times,serif" font-size="20.00">ERA5 monthly</text>
+<text text-anchor="middle" x="68.83" y="-209" font-family="Times,serif" font-size="20.00">climate</text>
+</g>
+<!-- annual -->
+<g id="node4" class="node">
+<title>annual</title>
+<path fill="#c6f6c6" stroke="black" stroke-width="2" d="M298.17,-255C298.17,-255 211.36,-255 211.36,-255 205.36,-255 199.36,-249 199.36,-243 199.36,-243 199.36,-211 199.36,-211 199.36,-205 205.36,-199 211.36,-199 211.36,-199 298.17,-199 298.17,-199 304.17,-199 310.17,-205 310.17,-211 310.17,-211 310.17,-243 310.17,-243 310.17,-249 304.17,-255 298.17,-255"></path>
+<text text-anchor="middle" x="254.77" y="-233" font-family="Times,serif" font-size="20.00">Annual</text>
+<text text-anchor="middle" x="254.77" y="-209" font-family="Times,serif" font-size="20.00">aggregation</text>
+</g>
+<!-- era5&#45;&gt;annual -->
+<g id="edge1" class="edge">
+<title>era5-&gt;annual</title>
+<path fill="none" stroke="black" stroke-width="2" d="M137.54,-227C137.54,-227 189.39,-227 189.39,-227"></path>
+<polygon fill="black" stroke="black" stroke-width="2" points="189.39,-230.5 199.39,-227 189.39,-223.5 189.39,-230.5"></polygon>
+</g>
+<!-- pop -->
+<g id="node2" class="node">
+<title>pop</title>
+<path fill="#b3d9ff" stroke="black" stroke-width="2" d="M108.01,-156C108.01,-156 29.66,-156 29.66,-156 23.66,-156 17.66,-150 17.66,-144 17.66,-144 17.66,-112 17.66,-112 17.66,-106 23.66,-100 29.66,-100 29.66,-100 108.01,-100 108.01,-100 114.01,-100 120.01,-106 120.01,-112 120.01,-112 120.01,-144 120.01,-144 120.01,-150 114.01,-156 108.01,-156"></path>
+<text text-anchor="middle" x="68.83" y="-134" font-family="Times,serif" font-size="20.00">Population</text>
+<text text-anchor="middle" x="68.83" y="-110" font-family="Times,serif" font-size="20.00">rasters</text>
+</g>
+<!-- interp -->
+<g id="node5" class="node">
+<title>interp</title>
+<path fill="#c6f6c6" stroke="black" stroke-width="2" d="M301.97,-156C301.97,-156 207.57,-156 207.57,-156 201.57,-156 195.57,-150 195.57,-144 195.57,-144 195.57,-112 195.57,-112 195.57,-106 201.57,-100 207.57,-100 207.57,-100 301.97,-100 301.97,-100 307.97,-100 313.97,-106 313.97,-112 313.97,-112 313.97,-144 313.97,-144 313.97,-150 307.97,-156 301.97,-156"></path>
+<text text-anchor="middle" x="254.77" y="-134" font-family="Times,serif" font-size="20.00">Temporal</text>
+<text text-anchor="middle" x="254.77" y="-110" font-family="Times,serif" font-size="20.00">interpolation</text>
+</g>
+<!-- pop&#45;&gt;interp -->
+<g id="edge2" class="edge">
+<title>pop-&gt;interp</title>
+<path fill="none" stroke="black" stroke-width="2" d="M120.13,-128C120.13,-128 185.42,-128 185.42,-128"></path>
+<polygon fill="black" stroke="black" stroke-width="2" points="185.42,-131.5 195.42,-128 185.42,-124.5 185.42,-131.5"></polygon>
+</g>
+<!-- countries -->
+<g id="node3" class="node">
+<title>countries</title>
+<path fill="#b3d9ff" stroke="black" stroke-width="2" d="M645.56,-106C645.56,-106 579.88,-106 579.88,-106 573.88,-106 567.88,-100 567.88,-94 567.88,-94 567.88,-62 567.88,-62 567.88,-56 573.88,-50 579.88,-50 579.88,-50 645.56,-50 645.56,-50 651.56,-50 657.56,-56 657.56,-62 657.56,-62 657.56,-94 657.56,-94 657.56,-100 651.56,-106 645.56,-106"></path>
+<text text-anchor="middle" x="612.72" y="-84" font-family="Times,serif" font-size="20.00">Country</text>
+<text text-anchor="middle" x="612.72" y="-60" font-family="Times,serif" font-size="20.00">polygons</text>
+</g>
+<!-- extract -->
+<g id="node8" class="node">
+<title>extract</title>
+<path fill="#c6f6c6" stroke="black" stroke-width="2" d="M845.92,-155C845.92,-155 734.1,-155 734.1,-155 728.1,-155 722.1,-149 722.1,-143 722.1,-143 722.1,-111 722.1,-111 722.1,-105 728.1,-99 734.1,-99 734.1,-99 845.92,-99 845.92,-99 851.92,-99 857.92,-105 857.92,-111 857.92,-111 857.92,-143 857.92,-143 857.92,-149 851.92,-155 845.92,-155"></path>
+<text text-anchor="middle" x="790.01" y="-133" font-family="Times,serif" font-size="20.00">Raster-vector</text>
+<text text-anchor="middle" x="790.01" y="-109" font-family="Times,serif" font-size="20.00">exact_extract()</text>
+</g>
+<!-- countries&#45;&gt;extract -->
+<g id="edge7" class="edge">
+<title>countries-&gt;extract</title>
+<path fill="none" stroke="black" stroke-width="2" d="M657.46,-102.5C657.46,-102.5 711.8,-102.5 711.8,-102.5"></path>
+<polygon fill="black" stroke="black" stroke-width="2" points="711.8,-106 721.8,-102.5 711.8,-99 711.8,-106"></polygon>
+</g>
+<!-- align -->
+<g id="node6" class="node">
+<title>align</title>
+<path fill="#c6f6c6" stroke="black" stroke-width="2" d="M491.14,-205C491.14,-205 384.11,-205 384.11,-205 378.11,-205 372.11,-199 372.11,-193 372.11,-193 372.11,-161 372.11,-161 372.11,-155 378.11,-149 384.11,-149 384.11,-149 491.14,-149 491.14,-149 497.14,-149 503.14,-155 503.14,-161 503.14,-161 503.14,-193 503.14,-193 503.14,-199 497.14,-205 491.14,-205"></path>
+<text text-anchor="middle" x="437.63" y="-183" font-family="Times,serif" font-size="20.00">Grid</text>
+<text text-anchor="middle" x="437.63" y="-159" font-family="Times,serif" font-size="20.00">harmonization</text>
+</g>
+<!-- annual&#45;&gt;align -->
+<g id="edge3" class="edge">
+<title>annual-&gt;align</title>
+<path fill="none" stroke="black" stroke-width="2" d="M255.32,-198.78C255.32,-187.66 255.32,-177.5 255.32,-177.5 255.32,-177.5 362.07,-177.5 362.07,-177.5"></path>
+<polygon fill="black" stroke="black" stroke-width="2" points="362.07,-181 372.07,-177.5 362.07,-174 362.07,-181"></polygon>
+</g>
+<!-- interp&#45;&gt;align -->
+<g id="edge4" class="edge">
+<title>interp-&gt;align</title>
+<path fill="none" stroke="black" stroke-width="2" d="M313.88,-152.5C313.88,-152.5 362.07,-152.5 362.07,-152.5"></path>
+<polygon fill="black" stroke="black" stroke-width="2" points="362.07,-156 372.07,-152.5 362.07,-149 362.07,-156"></polygon>
+</g>
+<!-- weight -->
+<g id="node7" class="node">
+<title>weight</title>
+<path fill="#c6f6c6" stroke="black" stroke-width="2" d="M651.89,-205C651.89,-205 573.55,-205 573.55,-205 567.55,-205 561.55,-199 561.55,-193 561.55,-193 561.55,-161 561.55,-161 561.55,-155 567.55,-149 573.55,-149 573.55,-149 651.89,-149 651.89,-149 657.89,-149 663.89,-155 663.89,-161 663.89,-161 663.89,-193 663.89,-193 663.89,-199 657.89,-205 651.89,-205"></path>
+<text text-anchor="middle" x="612.72" y="-183" font-family="Times,serif" font-size="20.00">Population</text>
+<text text-anchor="middle" x="612.72" y="-159" font-family="Times,serif" font-size="20.00">weighting</text>
+</g>
+<!-- align&#45;&gt;weight -->
+<g id="edge5" class="edge">
+<title>align-&gt;weight</title>
+<path fill="none" stroke="black" stroke-width="2" d="M503.32,-177C503.32,-177 551.43,-177 551.43,-177"></path>
+<polygon fill="black" stroke="black" stroke-width="2" points="551.43,-180.5 561.43,-177 551.43,-173.5 551.43,-180.5"></polygon>
+</g>
+<!-- weight&#45;&gt;extract -->
+<g id="edge6" class="edge">
+<title>weight-&gt;extract</title>
+<path fill="none" stroke="black" stroke-width="2" d="M613.32,-148.78C613.32,-137.66 613.32,-127.5 613.32,-127.5 613.32,-127.5 711.95,-127.5 711.95,-127.5"></path>
+<polygon fill="black" stroke="black" stroke-width="2" points="711.95,-131 721.95,-127.5 711.95,-124 711.95,-131"></polygon>
+</g>
+<!-- exposure -->
+<g id="node9" class="node">
+<title>exposure</title>
+<path fill="#c6f6c6" stroke="black" stroke-width="2" d="M1026.41,-155C1026.41,-155 928.15,-155 928.15,-155 922.15,-155 916.15,-149 916.15,-143 916.15,-143 916.15,-111 916.15,-111 916.15,-105 922.15,-99 928.15,-99 928.15,-99 1026.41,-99 1026.41,-99 1032.41,-99 1038.41,-105 1038.41,-111 1038.41,-111 1038.41,-143 1038.41,-143 1038.41,-149 1032.41,-155 1026.41,-155"></path>
+<text text-anchor="middle" x="977.28" y="-133" font-family="Times,serif" font-size="20.00">Country-year</text>
+<text text-anchor="middle" x="977.28" y="-109" font-family="Times,serif" font-size="20.00">exposure</text>
+</g>
+<!-- extract&#45;&gt;exposure -->
+<g id="edge8" class="edge">
+<title>extract-&gt;exposure</title>
+<path fill="none" stroke="black" stroke-width="2" d="M858.15,-127C858.15,-127 906.02,-127 906.02,-127"></path>
+<polygon fill="black" stroke="black" stroke-width="2" points="906.02,-130.5 916.02,-127 906.02,-123.5 906.02,-130.5"></polygon>
+</g>
+<!-- panel -->
+<g id="node11" class="node">
+<title>panel</title>
+<path fill="#ffcccc" stroke="black" stroke-width="2" d="M1155.89,-105C1155.89,-105 1108.83,-105 1108.83,-105 1102.83,-105 1096.83,-99 1096.83,-93 1096.83,-93 1096.83,-61 1096.83,-61 1096.83,-55 1102.83,-49 1108.83,-49 1108.83,-49 1155.89,-49 1155.89,-49 1161.89,-49 1167.89,-55 1167.89,-61 1167.89,-61 1167.89,-93 1167.89,-93 1167.89,-99 1161.89,-105 1155.89,-105"></path>
+<text text-anchor="middle" x="1132.36" y="-83" font-family="Times,serif" font-size="20.00">Panel</text>
+<text text-anchor="middle" x="1132.36" y="-59" font-family="Times,serif" font-size="20.00">dataset</text>
+</g>
+<!-- exposure&#45;&gt;panel -->
+<g id="edge9" class="edge">
+<title>exposure-&gt;panel</title>
+<path fill="none" stroke="black" stroke-width="2" d="M1038.51,-130C1082.22,-130 1133.32,-130 1133.32,-130 1133.32,-130 1133.32,-115.05 1133.32,-115.05"></path>
+<polygon fill="black" stroke="black" stroke-width="2" points="1136.82,-115.05 1133.32,-105.05 1129.82,-115.05 1136.82,-115.05"></polygon>
+</g>
+<!-- gdp -->
+<g id="node10" class="node">
+<title>gdp</title>
+<path fill="#ffcccc" stroke="black" stroke-width="2" d="M1022.59,-56C1022.59,-56 931.97,-56 931.97,-56 925.97,-56 919.97,-50 919.97,-44 919.97,-44 919.97,-12 919.97,-12 919.97,-6 925.97,0 931.97,0 931.97,0 1022.59,0 1022.59,0 1028.59,0 1034.59,-6 1034.59,-12 1034.59,-12 1034.59,-44 1034.59,-44 1034.59,-50 1028.59,-56 1022.59,-56"></path>
+<text text-anchor="middle" x="977.28" y="-34" font-family="Times,serif" font-size="20.00">World Bank</text>
+<text text-anchor="middle" x="977.28" y="-10" font-family="Times,serif" font-size="20.00">GDP</text>
+</g>
+<!-- gdp&#45;&gt;panel -->
+<g id="edge10" class="edge">
+<title>gdp-&gt;panel</title>
+<path fill="none" stroke="black" stroke-width="2" d="M1034.59,-52.5C1034.59,-52.5 1086.43,-52.5 1086.43,-52.5"></path>
+<polygon fill="black" stroke="black" stroke-width="2" points="1086.43,-56 1096.43,-52.5 1086.43,-49 1086.43,-56"></polygon>
+</g>
+<!-- twfe -->
+<g id="node12" class="node">
+<title>twfe</title>
+<path fill="#ffcccc" stroke="black" stroke-width="2" d="M1312.42,-105C1312.42,-105 1238.03,-105 1238.03,-105 1232.03,-105 1226.03,-99 1226.03,-93 1226.03,-93 1226.03,-61 1226.03,-61 1226.03,-55 1232.03,-49 1238.03,-49 1238.03,-49 1312.42,-49 1312.42,-49 1318.42,-49 1324.42,-55 1324.42,-61 1324.42,-61 1324.42,-93 1324.42,-93 1324.42,-99 1318.42,-105 1312.42,-105"></path>
+<text text-anchor="middle" x="1275.22" y="-83" font-family="Times,serif" font-size="20.00">TWFE</text>
+<text text-anchor="middle" x="1275.22" y="-59" font-family="Times,serif" font-size="20.00">regression</text>
+</g>
+<!-- panel&#45;&gt;twfe -->
+<g id="edge11" class="edge">
+<title>panel-&gt;twfe</title>
+<path fill="none" stroke="black" stroke-width="2" d="M1168.04,-77C1168.04,-77 1216,-77 1216,-77"></path>
+<polygon fill="black" stroke="black" stroke-width="2" points="1216,-80.5 1226,-77 1216,-73.5 1216,-80.5"></polygon>
+</g>
+</g>
+</svg>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+<div style="margin-top:-5em;">
+
+</div>
+<ul>
+<li><p>Climate is only one application: the same workflow can be used to study pollution, accessibility, flood risk, or habitat loss.</p></li>
+<li><p>The analytical choices made during construction can strongly influence scientific conclusions.</p></li>
+<li><p><strong>Goal of today’s lecture:</strong> transform <strong>raw spatial data</strong> into <strong>scientific inference</strong>.</p></li>
+</ul>
+</section>
+<section id="era5-climate-data" class="slide level2">
+<h2>ERA5 climate data</h2>
+<p>We start from ERA5 reanalysis data, the gold standard in modern climate analysis.</p>
+<p>We focus on data on temperature and precipitation.</p>
+<ul>
+<li><p>Load <code>temp.tif</code> and <code>prec.tif</code>. Function <code>rast()</code></p></li>
+<li><p>Inspect the raster: <code>crs()</code>, <code>res()</code>, <code>extent()</code>, <code>names()</code>.</p></li>
+</ul>
+<blockquote>
+<p>What CRS are we using? What is the spatial resolution? What is the temporal resolution, since data is covering 1980-2025?</p>
+</blockquote>
+<div class="fragment">
+<p>Names are cryptic…</p>
+<ul>
+<li>Use:</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="fu">names</span>(temp) <span class="ot">&lt;-</span> <span class="fu">as.POSIXct</span>(</span>
+<span id="cb1-2"><a href=""></a>  <span class="fu">as.numeric</span>(<span class="fu">sub</span>(<span class="st">".*="</span>, <span class="st">""</span>, <span class="fu">names</span>(temp))),</span>
+<span id="cb1-3"><a href=""></a>  <span class="at">origin =</span> <span class="st">"1970-01-01"</span>,</span>
+<span id="cb1-4"><a href=""></a>  <span class="at">tz =</span> <span class="st">"UTC"</span></span>
+<span id="cb1-5"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>to have nicer names.</p>
+<ul>
+<li>Do the same for <code>prec</code>.</li>
+</ul>
+</div>
+</section>
+<section id="climate-units-matter" class="slide level2">
+<h2>Climate units matter</h2>
+<ul>
+<li>Inspect the first monthly layer: use <code>global()</code> with <code>min</code> and <code>max</code></li>
+</ul>
+<div class="fragment">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a><span class="fu">global</span>(temp[[<span class="dv">1</span>]], <span class="fu">c</span>(<span class="st">"min"</span>, <span class="st">"max"</span>), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote>
+<p>What’s the unit for temperature?</p>
+</blockquote>
+</div>
+<div class="fragment">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a>temp <span class="ot">&lt;-</span> temp <span class="sc">-</span> <span class="fl">273.15</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>do the same for prec.</li>
+</ul>
+</div>
+<div class="fragment">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a><span class="fu">global</span>(prec[[<span class="dv">1</span>]], <span class="fu">c</span>(<span class="st">"min"</span>, <span class="st">"max"</span>), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote>
+<p>Does the maximum look reasonable?</p>
+</blockquote>
+</div>
+</section>
+<section id="aggregate-temperature-over-time" class="slide level2">
+<h2>Aggregate temperature over time</h2>
+<p>To aggregate over time, you can use the function <code>tapp</code></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="fu">tapp</span>(</span>
+<span id="cb5-2"><a href=""></a>  rast, <span class="co">#the raster object</span></span>
+<span id="cb5-3"><a href=""></a>  years, <span class="co">#a grouping vector, the same length as nlyr(rast)</span></span>
+<span id="cb5-4"><a href=""></a>  mean <span class="co">#aggregating function</span></span>
+<span id="cb5-5"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>You can retrieve the years vector using the lubridate function</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a>years <span class="ot">&lt;-</span> <span class="fu">format</span>(</span>
+<span id="cb6-2"><a href=""></a>  <span class="fu">as.Date</span>(<span class="fu">names</span>(temp)),</span>
+<span id="cb6-3"><a href=""></a>  <span class="st">"%Y"</span></span>
+<span id="cb6-4"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote>
+<p>Should annual temperature be computed trough a mean or a sum?</p>
+</blockquote>
+<div class="fragment">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a>temp_year <span class="ot">&lt;-</span> <span class="fu">tapp</span>(</span>
+<span id="cb7-2"><a href=""></a>  temp, <span class="co">#compute month totals</span></span>
+<span id="cb7-3"><a href=""></a>  years, <span class="co">#over years</span></span>
+<span id="cb7-4"><a href=""></a>  mean <span class="co">#average across months</span></span>
+<span id="cb7-5"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="aggregate-precipitation-over-time" class="slide level2">
+<h2>Aggregate precipitation over time</h2>
+<p>Temperature and precipitation behave differently.</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Type</th>
+<th>Annual aggregation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Temperature</td>
+<td>Intensive</td>
+<td>?</td>
+</tr>
+<tr class="even">
+<td>Precipitation</td>
+<td>Extensive</td>
+<td>?</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Should we use <code>sum()</code> or <code>mean()</code>? Should we multiply our values by something before aggregating?</p>
+</blockquote>
+<div class="fragment">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a>days <span class="ot">&lt;-</span> <span class="fu">days_in_month</span>(</span>
+<span id="cb8-2"><a href=""></a>  <span class="fu">as.Date</span>(<span class="fu">names</span>(prec))</span>
+<span id="cb8-3"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="fragment">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a>prec_year <span class="ot">&lt;-</span> <span class="fu">tapp</span>(</span>
+<span id="cb9-2"><a href=""></a>  prec <span class="sc">*</span> days, <span class="co">#compute month totals</span></span>
+<span id="cb9-3"><a href=""></a>  years, <span class="co">#over years</span></span>
+<span id="cb9-4"><a href=""></a>  sum <span class="co">#sum over months</span></span>
+<span id="cb9-5"><a href=""></a>) <span class="sc">*</span> <span class="dv">1000</span> <span class="co">#transform into mm</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="sanity-checks" class="slide level2">
+<h2>Sanity checks</h2>
+<ul>
+<li>Inspect the new rasters <code>temp_year</code> and <code>temp_year</code> by computing <code>min</code>, <code>mean</code> and <code>max</code> through <code>global()</code>:
+<ul>
+<li>Temperature: roughly between -50°C and +40°C</li>
+<li>Precipitation: it is measured in mm now…</li>
+</ul></li>
+<li>Plot random years: Can you recognize: deserts, mountain ranges, tropical regions?</li>
+</ul>
+<div class="fragment">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a><span class="fu">global</span>(temp_year, <span class="fu">c</span>(<span class="st">"min"</span>, <span class="st">"mean"</span>, <span class="st">"max"</span>))</span>
+<span id="cb10-2"><a href=""></a><span class="fu">global</span>(prec_year, <span class="fu">c</span>(<span class="st">"min"</span>, <span class="st">"mean"</span>, <span class="st">"max"</span>))</span>
+<span id="cb10-3"><a href=""></a></span>
+<span id="cb10-4"><a href=""></a><span class="fu">plot</span>(temp_year[[<span class="dv">1</span>]])</span>
+<span id="cb10-5"><a href=""></a><span class="fu">title</span>(<span class="st">"ERA5 Temperature, 1980"</span>)</span>
+<span id="cb10-6"><a href=""></a></span>
+<span id="cb10-7"><a href=""></a><span class="fu">plot</span>(prec_year[[<span class="dv">1</span>]])</span>
+<span id="cb10-8"><a href=""></a><span class="fu">title</span>(<span class="st">"ERA5 Precipitation, 1980"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote>
+<p>Better be safe than sorry… <strong>Never trust transformations without checking the output.</strong></p>
+</blockquote>
+</div>
+</section>
+<section id="population-data" class="slide level2">
+<h2>Population data</h2>
+<blockquote>
+<p>“If a tree falls in a forest and no one is around to hear it, does it make a sound?”</p>
+</blockquote>
+<div class="columns middle">
+<div class="column" style="width:50%;">
+<ul>
+<li><p>People tend to concentrate in cities, valleys, and coastal areas. For economic analysis, we only care about climate <em>experienced</em> by people (e.g.&nbsp;we don’t care how hot is in a desert).</p></li>
+<li><p>To account for this, we also need information on where people live.</p></li>
+<li><p>Data source is Gridded Population of the World (GPW v4, NASA), for 2000, 2005, 2010, 2015, 2020.</p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li><p>Load each of the five rasters using <code>rast</code>.</p></li>
+<li><p>Combine them in a single raster using <code>rast(list(...))</code>.</p></li>
+<li><p>Fix layer names.</p></li>
+</ul>
+<div class="fragment">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a>pop2000 <span class="ot">&lt;-</span> <span class="fu">rast</span>(</span>
+<span id="cb11-2"><a href=""></a>  <span class="st">"data/gpw_v4_population_count_adjusted_to_2015_unwpp_country_totals_rev11_2000_2pt5_min.tif"</span></span>
+<span id="cb11-3"><a href=""></a>)</span>
+<span id="cb11-4"><a href=""></a></span>
+<span id="cb11-5"><a href=""></a>pop2005 <span class="ot">&lt;-</span> <span class="fu">rast</span>(</span>
+<span id="cb11-6"><a href=""></a>  <span class="st">"data/gpw_v4_population_count_adjusted_to_2015_unwpp_country_totals_rev11_2005_2pt5_min.tif"</span></span>
+<span id="cb11-7"><a href=""></a>)</span>
+<span id="cb11-8"><a href=""></a></span>
+<span id="cb11-9"><a href=""></a><span class="co">#...</span></span>
+<span id="cb11-10"><a href=""></a></span>
+<span id="cb11-11"><a href=""></a>pop <span class="ot">&lt;-</span> <span class="fu">rast</span>(</span>
+<span id="cb11-12"><a href=""></a>  <span class="fu">list</span>(</span>
+<span id="cb11-13"><a href=""></a>    pop2000, pop2005, pop2010, pop2015, pop2020</span>
+<span id="cb11-14"><a href=""></a>  )</span>
+<span id="cb11-15"><a href=""></a>)</span>
+<span id="cb11-16"><a href=""></a></span>
+<span id="cb11-17"><a href=""></a><span class="fu">names</span>(pop) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"2000"</span>, <span class="st">"2005"</span>, <span class="st">"2010"</span>, <span class="st">"2015"</span>, <span class="st">"2020"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div></div>
+</section>
+<section id="sanity-check-does-the-population-raster-make-sense" class="slide level2">
+<h2>Sanity check: Does the population raster make sense?</h2>
+<p>Inspect the raster:</p>
+<ul>
+<li><code>plot()</code></li>
+<li><code>global()</code></li>
+</ul>
+<p>Question:</p>
+<blockquote>
+<p>Can we recover world population totals?</p>
+</blockquote>
+<p>Expected values:</p>
+<ul>
+<li>2000 ≈ 6.1 billion</li>
+<li>2005 ≈ 6.5 billion</li>
+<li>2010 ≈ 6.9 billion</li>
+<li>2015 ≈ 7.3 billion</li>
+<li>2020 ≈ 7.8 billion</li>
+</ul>
+<div class="fragment">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href=""></a><span class="fu">global</span>(pop, <span class="st">"sum"</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fl">1e9</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="temporal-harmonization" class="slide level2">
+<h2>Temporal harmonization</h2>
+<p>We need climate and population rasters to talk to each other.</p>
+<ul>
+<li><p>The GPW dataset provides population counts for 2000, 2005, 2010, 2015, 2020.</p></li>
+<li><p>Climate data are annual: 1980 … 2025.</p></li>
+</ul>
+<p>We assume that population changes <em>linearly</em> over time.</p>
+<p>Our strategy:</p>
+<ul>
+<li>1980–1999 → use 2000 population</li>
+<li>2000–2020 → linear interpolation</li>
+<li>2021–2025 → use 2020 population</li>
+</ul>
+<p>Construct a raster for population in 2003 manually.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb13-1"><a href=""></a>2000 -- -- -- 2003 -- -- 2005</span>
+<span id="cb13-2"><a href=""></a> |              |          |</span>
+<span id="cb13-3"><a href=""></a> 0%            60%       100%</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="fragment">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href=""></a>pop2003 <span class="ot">&lt;-</span></span>
+<span id="cb14-2"><a href=""></a>  <span class="fl">0.4</span> <span class="sc">*</span> pop[[<span class="st">"2000"</span>]] <span class="sc">+</span></span>
+<span id="cb14-3"><a href=""></a>  <span class="fl">0.6</span> <span class="sc">*</span> pop[[<span class="st">"2005"</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>–</p>
+</section>
+<section id="build-a-general-interpolation-function" class="slide level2">
+<h2>Build a general interpolation function</h2>
+<p>Let’s automate, building a custom function</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href=""></a></span>
+<span id="cb15-2"><a href=""></a>interp_rast <span class="ot">&lt;-</span> <span class="cf">function</span>(year, rast){</span>
+<span id="cb15-3"><a href=""></a>  </span>
+<span id="cb15-4"><a href=""></a>  <span class="cf">if</span>(year <span class="sc">&lt;=</span> <span class="dv">2000</span>) <span class="co"># before 2000: use 2000 population</span></span>
+<span id="cb15-5"><a href=""></a>    <span class="fu">return</span>(rast[[<span class="st">"2000"</span>]])</span>
+<span id="cb15-6"><a href=""></a>  </span>
+<span id="cb15-7"><a href=""></a>  <span class="cf">if</span>(year <span class="sc">&gt;=</span> <span class="dv">2020</span>) <span class="co"># after 2020: use 2020 population</span></span>
+<span id="cb15-8"><a href=""></a>    <span class="fu">return</span>(rast[[<span class="st">"2020"</span>]])</span>
+<span id="cb15-9"><a href=""></a>  </span>
+<span id="cb15-10"><a href=""></a>  y0 <span class="ot">&lt;-</span> <span class="fu">floor</span>(year <span class="sc">/</span> <span class="dv">5</span>) <span class="sc">*</span> <span class="dv">5</span> <span class="co"># lower and upper benchmark years</span></span>
+<span id="cb15-11"><a href=""></a>  y1 <span class="ot">&lt;-</span> y0 <span class="sc">+</span> <span class="dv">5</span></span>
+<span id="cb15-12"><a href=""></a>  </span>
+<span id="cb15-13"><a href=""></a>  weight_next <span class="ot">&lt;-</span> <span class="co"># interpolation weight</span></span>
+<span id="cb15-14"><a href=""></a>    (year <span class="sc">-</span> y0) <span class="sc">/</span></span>
+<span id="cb15-15"><a href=""></a>    (y1 <span class="sc">-</span> y0)</span>
+<span id="cb15-16"><a href=""></a>  </span>
+<span id="cb15-17"><a href=""></a>  (<span class="dv">1</span> <span class="sc">-</span> weight_next) <span class="sc">*</span> <span class="co"># linear interpolation</span></span>
+<span id="cb15-18"><a href=""></a>    rast[[<span class="fu">as.character</span>(y0)]] <span class="sc">+</span></span>
+<span id="cb15-19"><a href=""></a>    </span>
+<span id="cb15-20"><a href=""></a>    weight_next <span class="sc">*</span></span>
+<span id="cb15-21"><a href=""></a>    rast[[<span class="fu">as.character</span>(y1)]]</span>
+<span id="cb15-22"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Test the function applying it to 2003 and use <code>identical()</code> to check if it is equal to <code>pop2003</code></p>
+<div class="fragment">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href=""></a>test <span class="ot">&lt;-</span> <span class="fu">interp_rast</span>(<span class="dv">2003</span>, pop)</span>
+<span id="cb16-2"><a href=""></a><span class="fu">identical</span>(test, pop2003)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="compute-all-years" class="slide level2">
+<h2>Compute all years</h2>
+<div class="columns middle">
+<div class="column" style="width:50%;">
+<ul>
+<li>Build a vector years with the input variable (1980:2025)</li>
+</ul>
+<div class="fragment">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href=""></a>years <span class="ot">&lt;-</span> <span class="dv">1980</span><span class="sc">:</span><span class="dv">2025</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Use lapply to apply the function to every year</li>
+</ul>
+</div>
+<div class="fragment">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href=""></a>pop_yearly <span class="ot">&lt;-</span> <span class="fu">lapply</span>(</span>
+<span id="cb18-2"><a href=""></a>  years,</span>
+<span id="cb18-3"><a href=""></a>  interp_rast,</span>
+<span id="cb18-4"><a href=""></a>  <span class="at">rast =</span> pop</span>
+<span id="cb18-5"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Inspect the object with class() and length()</li>
+</ul>
+</div>
+<div class="fragment">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href=""></a><span class="fu">class</span>(pop_yearly)</span>
+<span id="cb19-2"><a href=""></a><span class="fu">length</span>(pop_yearly)</span>
+<span id="cb19-3"><a href=""></a><span class="fu">class</span>(pop_yearly[[<span class="dv">1</span>]])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote>
+<p>Why is the result a LIST? Because each element is a raster.</p>
+</blockquote>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<ul>
+<li>Stack everything into a single raster object</li>
+</ul>
+</div>
+<div class="fragment">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href=""></a>pop_yearly <span class="ot">&lt;-</span> <span class="fu">rast</span>(pop_yearly)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Fix the names of the layers</li>
+</ul>
+</div>
+<div class="fragment">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href=""></a><span class="fu">names</span>(pop_yearly) <span class="ot">&lt;-</span> years</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Reinspect the object. How many layers do you expect?</li>
+</ul>
+</div>
+<div class="fragment">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href=""></a><span class="fu">class</span>(pop_yearly)</span>
+<span id="cb22-2"><a href=""></a></span>
+<span id="cb22-3"><a href=""></a><span class="fu">nlyr</span>(pop_yearly)</span>
+<span id="cb22-4"><a href=""></a></span>
+<span id="cb22-5"><a href=""></a>pop_yearly</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Perform a sanity check: compute global population by year</li>
+</ul>
+</div>
+<div class="fragment">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href=""></a><span class="fu">global</span>(pop_yearly, <span class="st">"sum"</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fl">1e9</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div></div>
+<div class="fragment">
+<blockquote>
+<p>Under which circumstances using 2000 population for 1980–1999 is potentially problematic?</p>
+</blockquote>
+</div>
+</section>
+<section id="spatial-harmonization" class="slide level2">
+<h2>Spatial harmonization</h2>
+<div class="columns middle">
+<div class="column" style="width:50%;">
+<p>Climate and socio-economic data rarely share the same grid.</p>
+<p>Before combining rasters, we must answer two questions:</p>
+<ol type="1">
+<li>Do they have the same <strong>resolution</strong>?</li>
+<li>Are their cells <strong>aligned</strong> in space?</li>
+</ol>
+<ul>
+<li>Let’s start with resolution. Compare climate and population rasters using <code>res()</code>. What differences do you observe?</li>
+</ul>
+<div class="fragment">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href=""></a><span class="fu">res</span>(prec_year)</span>
+<span id="cb24-2"><a href=""></a><span class="fu">res</span>(pop_yearly)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Compute the ratio: how many cells from pop_yearly fit into a cell from prec_year?</li>
+</ul>
+</div>
+<div class="fragment">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href=""></a><span class="fu">res</span>(prec_year)<span class="sc">/</span><span class="fu">res</span>(pop_yearly)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="lecture4_files/figure-revealjs/unnamed-chunk-2-1.png" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="aggregating-smaller-raster" class="slide level2">
+<h2>Aggregating smaller raster</h2>
+<blockquote>
+<p>The empirical bottleneck is always given by the coarser dataset.</p>
+</blockquote>
+<ul>
+<li><p>Population is an extensive variable. When aggregating cells should we use <code>sum()</code> or <code>mean()</code>?</p></li>
+<li><p>Use the function aggregate to aggregate by a factor of six. Sintax:</p></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href=""></a><span class="fu">aggregate</span>(</span>
+<span id="cb26-2"><a href=""></a>  raster, <span class="co">#raster object</span></span>
+<span id="cb26-3"><a href=""></a>  <span class="at">fact =</span> n, <span class="co">#factor of aggregation</span></span>
+<span id="cb26-4"><a href=""></a>  <span class="at">fun =</span> <span class="st">"fun"</span>, <span class="co">#aggregating function</span></span>
+<span id="cb26-5"><a href=""></a>  <span class="at">na.rm =</span> <span class="cn">TRUE</span> <span class="co">#options</span></span>
+<span id="cb26-6"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="fragment">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href=""></a>pop_15 <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(</span>
+<span id="cb27-2"><a href=""></a>  pop_yearly,</span>
+<span id="cb27-3"><a href=""></a>  <span class="at">fact =</span> <span class="dv">6</span>,</span>
+<span id="cb27-4"><a href=""></a>  <span class="at">fun =</span> <span class="st">"sum"</span>,</span>
+<span id="cb27-5"><a href=""></a>  <span class="at">na.rm =</span> <span class="cn">TRUE</span></span>
+<span id="cb27-6"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Sanity checks. Check the resolution of <code>pop_15</code>. Compare annual global population between <code>pop_15</code> and <code>pop_yearly</code>.</li>
+</ul>
+</div>
+<div class="fragment">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href=""></a><span class="fu">res</span>(pop_15)</span>
+<span id="cb28-2"><a href=""></a><span class="fu">global</span>(pop_15, <span class="st">"sum"</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fl">1e9</span></span>
+<span id="cb28-3"><a href=""></a><span class="fu">global</span>(pop_yearly, <span class="st">"sum"</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fl">1e9</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="spatial-harmonization-alignin-grids" class="slide level2">
+<h2>Spatial harmonization: alignin grids</h2>
+<div class="columns middle">
+<div class="column" style="width:50%;">
+<p>Our rasters now share the same resolution. But are they <em>aligned</em>?</p>
+<ul>
+<li>Check using <code>ext()</code> and <code>origin()</code>.</li>
+</ul>
+<div class="fragment">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href=""></a><span class="fu">ext</span>(pop_15)</span>
+<span id="cb29-2"><a href=""></a><span class="fu">ext</span>(prec_year)</span>
+<span id="cb29-3"><a href=""></a><span class="fu">origin</span>(pop_15)</span>
+<span id="cb29-4"><a href=""></a><span class="fu">origin</span>(prec_year)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<p>The two rasters are <em>misaligned</em> both vertically and horizontally by half cell.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="lecture4_files/figure-revealjs/unnamed-chunk-3-1.png" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="spatial-interpolation" class="slide level2">
+<h2>Spatial interpolation</h2>
+<div class="columns middle">
+<div class="column" style="width:50%;">
+<ul>
+<li><p>A common fix to this problem is to <strong>interpolate</strong> values on <em>one grid</em> relative to the position of each cell in <em>another grid</em>.</p></li>
+<li><p>Among many methods, we are going to use the <strong>bilinear</strong> interpolation. We assign to each cell the average of the four nearest cells,</p></li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="lecture4_files/figure-revealjs/unnamed-chunk-4-1.png" width="528"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<p>Use the command <code>resample</code>. Sintax:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href=""></a><span class="fu">resample</span>(</span>
+<span id="cb30-2"><a href=""></a>  resampled_raster,</span>
+<span id="cb30-3"><a href=""></a>  target_raster,</span>
+<span id="cb30-4"><a href=""></a>  <span class="at">method =</span> <span class="st">"bilinear"</span></span>
+<span id="cb30-5"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="fragment">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href=""></a>pop_era5 <span class="ot">&lt;-</span> <span class="fu">resample</span>(</span>
+<span id="cb31-2"><a href=""></a>  pop_15,</span>
+<span id="cb31-3"><a href=""></a>  prec_year,</span>
+<span id="cb31-4"><a href=""></a>  <span class="at">method =</span> <span class="st">"bilinear"</span></span>
+<span id="cb31-5"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Sanity checks
+<ul>
+<li>Geometries should now match. Check with <code>compareGeom</code>.</li>
+<li>World population totals should remain <em>approximately</em> unchanged.</li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href=""></a><span class="fu">compareGeom</span>( pop_era5, prec_year, <span class="at">stopOnError =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb32-2"><a href=""></a><span class="fu">global</span>(pop_era5, <span class="st">"sum"</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fl">1e9</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div></div>
+</section>
+<section id="from-rasters-to-countries" class="slide level2">
+<h2>From rasters to countries</h2>
+<p>Until now we worked with rasters.</p>
+<p>However, econometric analysis is often performed at the country level.</p>
+<p>We therefore need country polygons to aggregate raster information.</p>
+<p>First, download country polygons:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href=""></a>countries <span class="ot">&lt;-</span> rnaturalearth<span class="sc">::</span><span class="fu">ne_countries</span>(</span>
+<span id="cb33-2"><a href=""></a>  <span class="at">scale =</span> <span class="st">"medium"</span>,</span>
+<span id="cb33-3"><a href=""></a>  <span class="at">returnclass =</span> <span class="st">"sf"</span></span>
+<span id="cb33-4"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Use <code>st_crs</code> and <code>crs</code> to check compatibility</li>
+<li>Use <code>plot()</code> and <code>plot(., add=TRUE)</code> to have visual overlay confirmation</li>
+</ul>
+<div class="fragment">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href=""></a><span class="fu">st_crs</span>(countries)</span>
+<span id="cb34-2"><a href=""></a><span class="fu">crs</span>(temp_year)</span>
+<span id="cb34-3"><a href=""></a><span class="fu">plot</span>(prec_year[[<span class="dv">1</span>]])</span>
+<span id="cb34-4"><a href=""></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(countries), <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="zonal-statistics-and-exact-extraction" class="slide level2">
+<h2>Zonal statistics and exact extraction</h2>
+<div class="columns middle">
+<div class="column" style="width:50%;">
+<p>We now want to aggregate raster values over polygons. This operation is known as <strong>zonal statistics</strong>.</p>
+<p>Cells intersecting country borders are only partially counted. Through exact extraction, boundary cells contribute proportionally to their covered area.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href=""></a><span class="fu">exact_extract</span>(</span>
+<span id="cb35-2"><a href=""></a>  raster,</span>
+<span id="cb35-3"><a href=""></a>  polygon,</span>
+<span id="cb35-4"><a href=""></a>  fun <span class="co">#aggregating function</span></span>
+<span id="cb35-5"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column" style="width:50%;">
+<center>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="lecture4_files/figure-revealjs/unnamed-chunk-5-1.png" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</center>
+</div></div>
+</section>
+<section id="further-weighting-population-weighting" class="slide level2">
+<h2>Further weighting: population weighting</h2>
+<div class="columns middle">
+<div class="column" style="width:50%;">
+<p>We are not simply using zonal statistic, but a weighted (by population) version of it. A hot desert and a large city should not contribute equally.</p>
+<p>Population-weighted temperature is defined as:</p>
+<p><span class="math display">\[
+T^{PW} =
+\frac{\sum_i T_i \times Pop_i}
+{\sum_i Pop_i}
+\]</span></p>
+<p>where (i) indexes raster cells.</p>
+<ul>
+<li>First compute the denominator <span class="math inline">\(T_i \times Pop_i\)</span> for every raster cell:</li>
+</ul>
+<div class="fragment">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href=""></a>temp_pop <span class="ot">&lt;-</span> temp_year <span class="sc">*</span> pop_era5</span>
+<span id="cb36-2"><a href=""></a>prec_pop <span class="ot">&lt;-</span> prec_year <span class="sc">*</span> pop_era5</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<ul>
+<li>Then, extract them and the denominator (<code>pop_era5</code>) using <code>exact_exctract()</code>. Which aggregating function should we use?</li>
+</ul>
+</div>
+<div class="fragment">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href=""></a>temp_num <span class="ot">&lt;-</span> <span class="fu">exact_extract</span>(</span>
+<span id="cb37-2"><a href=""></a>  temp_pop,</span>
+<span id="cb37-3"><a href=""></a>  countries,</span>
+<span id="cb37-4"><a href=""></a>  <span class="st">"sum"</span></span>
+<span id="cb37-5"><a href=""></a>)</span>
+<span id="cb37-6"><a href=""></a></span>
+<span id="cb37-7"><a href=""></a>prec_num <span class="ot">&lt;-</span> <span class="fu">exact_extract</span>(</span>
+<span id="cb37-8"><a href=""></a>  prec_pop,</span>
+<span id="cb37-9"><a href=""></a>  countries,</span>
+<span id="cb37-10"><a href=""></a>  <span class="st">"sum"</span></span>
+<span id="cb37-11"><a href=""></a>)</span>
+<span id="cb37-12"><a href=""></a></span>
+<span id="cb37-13"><a href=""></a>pop_den <span class="ot">&lt;-</span> <span class="fu">exact_extract</span>(</span>
+<span id="cb37-14"><a href=""></a>  pop_era5,</span>
+<span id="cb37-15"><a href=""></a>  countries,</span>
+<span id="cb37-16"><a href=""></a>  <span class="st">"sum"</span></span>
+<span id="cb37-17"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div></div>
+</section>
+<section id="further-weighting-population-weighting-ii" class="slide level2">
+<h2>Further weighting: population weighting II</h2>
+<div class="columns middle">
+<div class="column" style="width:50%;">
+<ul>
+<li>At this point, simply build the weighted measures conmputing the ratios</li>
+</ul>
+<div class="fragment">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href=""></a>temp_pw <span class="ot">&lt;-</span> temp_num <span class="sc">/</span> pop_den</span>
+<span id="cb38-2"><a href=""></a>prec_pw <span class="ot">&lt;-</span> prec_num <span class="sc">/</span> pop_den</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Sanity check: check dimensions with <code>dim()</code> and inspect values with <code>summary()</code></li>
+</ul>
+</div>
+<div class="fragment">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href=""></a><span class="fu">dim</span>(temp_pw)</span>
+<span id="cb39-2"><a href=""></a><span class="fu">dim</span>(prec_pw)</span>
+<span id="cb39-3"><a href=""></a></span>
+<span id="cb39-4"><a href=""></a><span class="fu">summary</span>(<span class="fu">as.matrix</span>(temp_pw))</span>
+<span id="cb39-5"><a href=""></a><span class="fu">summary</span>(<span class="fu">as.matrix</span>(prec_pw))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="fragment">
+<ul>
+<li><p>Do they make sense?</p></li>
+<li><p>Use the function <code>colMeans(., na.rm = TRUE)</code> to inspect and plot average temperature by year. We should see an increase…</p></li>
+</ul>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<center>
+<img src="warm.png" width="80%">
+</center>
+<p>Is this evidence of climate change? Of course a bit, but not necessarily: population weights also evolve over time.</p>
+</div>
+</div></div>
+</section>
+<section id="housekeeping" class="slide level2">
+<h2>Housekeeping</h2>
+<div class="columns middle">
+<div class="column" style="width:50%;">
+<ul>
+<li>Remove NA’s</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href=""></a>keep <span class="ot">&lt;-</span> <span class="sc">!</span><span class="fu">apply</span>(<span class="fu">is.na</span>(temp_pw), <span class="dv">1</span>, all)</span>
+<span id="cb40-2"><a href=""></a></span>
+<span id="cb40-3"><a href=""></a>countries <span class="ot">&lt;-</span> countries[keep, ]</span>
+<span id="cb40-4"><a href=""></a>temp_pw   <span class="ot">&lt;-</span> temp_pw[keep, ]</span>
+<span id="cb40-5"><a href=""></a>prec_pw   <span class="ot">&lt;-</span> prec_pw[keep, ]</span>
+<span id="cb40-6"><a href=""></a></span>
+<span id="cb40-7"><a href=""></a>temp_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(temp_pw)</span>
+<span id="cb40-8"><a href=""></a>prec_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(prec_pw)</span>
+<span id="cb40-9"><a href=""></a></span>
+<span id="cb40-10"><a href=""></a>years <span class="ot">&lt;-</span> <span class="dv">1980</span><span class="sc">:</span><span class="dv">2025</span></span>
+<span id="cb40-11"><a href=""></a></span>
+<span id="cb40-12"><a href=""></a><span class="fu">names</span>(temp_df) <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"temp_"</span>, years)</span>
+<span id="cb40-13"><a href=""></a><span class="fu">names</span>(prec_df) <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"prec_"</span>, years)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Use the command cbind to attach temp_df and prec_df columns to countries</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href=""></a>countries <span class="sc">%&gt;%</span></span>
+<span id="cb41-2"><a href=""></a>  <span class="fu">st_drop_geometry</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb41-3"><a href=""></a>  <span class="fu">transmute</span>(</span>
+<span id="cb41-4"><a href=""></a>    <span class="at">iso3 =</span> adm0_a3, <span class="co">#we call the identifies iso3</span></span>
+<span id="cb41-5"><a href=""></a>    <span class="at">country =</span> name  </span>
+<span id="cb41-6"><a href=""></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb41-7"><a href=""></a>  <span class="fu">bind_cols</span>(</span>
+<span id="cb41-8"><a href=""></a>    temp_df,</span>
+<span id="cb41-9"><a href=""></a>    prec_df,</span>
+<span id="cb41-10"><a href=""></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>For most econometric software, you need data in long format. Inspect the names of you columns and use pivot_longer()</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href=""></a><span class="fu">names</span>(panel_wide)</span>
+<span id="cb42-2"><a href=""></a></span>
+<span id="cb42-3"><a href=""></a>panel <span class="ot">&lt;-</span> panel_wide <span class="sc">%&gt;%</span></span>
+<span id="cb42-4"><a href=""></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb42-5"><a href=""></a>    <span class="at">cols =</span> <span class="sc">-</span><span class="fu">c</span>(iso3, country),</span>
+<span id="cb42-6"><a href=""></a>    <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">".value"</span>, <span class="st">"year"</span>),</span>
+<span id="cb42-7"><a href=""></a>    <span class="at">names_sep =</span> <span class="st">"_"</span></span>
+<span id="cb42-8"><a href=""></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb42-9"><a href=""></a>  <span class="fu">mutate</span>(</span>
+<span id="cb42-10"><a href=""></a>    <span class="at">year =</span> <span class="fu">as.integer</span>(year)</span>
+<span id="cb42-11"><a href=""></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div></div>
+</section>
+<section id="economic-data" class="slide level2">
+<h2>Economic data</h2>
+<div class="columns middle">
+<div class="column" style="width:50%;">
+<p>-vNow, we only need GDP data. Dowload it from the World Bank repository:</p>
+<div class="fragment">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href=""></a>gdp <span class="ot">&lt;-</span> WDI<span class="sc">::</span><span class="fu">WDI</span>(</span>
+<span id="cb43-2"><a href=""></a>  <span class="at">country =</span> <span class="st">"all"</span>,</span>
+<span id="cb43-3"><a href=""></a>  <span class="at">indicator =</span> <span class="st">"NY.GDP.PCAP.PP.KD"</span>,</span>
+<span id="cb43-4"><a href=""></a>  <span class="at">start =</span> <span class="dv">1980</span>,</span>
+<span id="cb43-5"><a href=""></a>  <span class="at">end =</span> <span class="dv">2025</span></span>
+<span id="cb43-6"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Perform a <code>left_join()</code> with you object panel</li>
+</ul>
+</div>
+<div class="fragment">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href=""></a>panel <span class="ot">&lt;-</span> panel <span class="sc">%&gt;%</span></span>
+<span id="cb44-2"><a href=""></a>  <span class="fu">left_join</span>(</span>
+<span id="cb44-3"><a href=""></a>    gdp <span class="sc">%&gt;%</span> <span class="fu">select</span>(iso3c, year, NY.GDP.PCAP.PP.KD),</span>
+<span id="cb44-4"><a href=""></a>    <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"iso3"</span> <span class="ot">=</span> <span class="st">"iso3c"</span>, <span class="st">"year"</span>)</span>
+<span id="cb44-5"><a href=""></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Use <code>filter()</code> to remove observations without GDP information</li>
+</ul>
+</div>
+<div class="fragment">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href=""></a>panel <span class="ot">&lt;-</span> panel <span class="sc">%&gt;%</span></span>
+<span id="cb45-2"><a href=""></a>  <span class="fu">filter</span>(</span>
+<span id="cb45-3"><a href=""></a>    <span class="sc">!</span><span class="fu">is.na</span>(NY.GDP.PCAP.PP.KD)</span>
+<span id="cb45-4"><a href=""></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<ul>
+<li>Use <code>group_by()</code> and <code>mutate()</code> to compute the rate of growth of GDP:</li>
+</ul>
+</div>
+<div class="fragment">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href=""></a>panel <span class="ot">&lt;-</span> panel <span class="sc">%&gt;%</span></span>
+<span id="cb46-2"><a href=""></a>  <span class="fu">arrange</span>(</span>
+<span id="cb46-3"><a href=""></a>    iso3,</span>
+<span id="cb46-4"><a href=""></a>    year</span>
+<span id="cb46-5"><a href=""></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb46-6"><a href=""></a>  <span class="fu">group_by</span>(iso3) <span class="sc">%&gt;%</span></span>
+<span id="cb46-7"><a href=""></a>  <span class="fu">mutate</span>(</span>
+<span id="cb46-8"><a href=""></a>    <span class="at">growth =</span> <span class="dv">100</span> <span class="sc">*</span> (</span>
+<span id="cb46-9"><a href=""></a>      <span class="fu">log</span>(NY.GDP.PCAP.PP.KD) <span class="sc">-</span></span>
+<span id="cb46-10"><a href=""></a>        <span class="fu">lag</span>(<span class="fu">log</span>(NY.GDP.PCAP.PP.KD))</span>
+<span id="cb46-11"><a href=""></a>    )</span>
+<span id="cb46-12"><a href=""></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb46-13"><a href=""></a>  <span class="fu">ungroup</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Sanity checks: are these growth rates reasonable? Use <code>summary()</code></li>
+</ul>
+</div>
+<div class="fragment">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href=""></a><span class="fu">summary</span>(panel<span class="sc">$</span>growth)</span>
+<span id="cb47-2"><a href=""></a><span class="fu">quantile</span>(</span>
+<span id="cb47-3"><a href=""></a>  panel<span class="sc">$</span>growth,</span>
+<span id="cb47-4"><a href=""></a>  <span class="at">probs =</span> <span class="fu">c</span>(.<span class="dv">01</span>, .<span class="dv">05</span>, .<span class="dv">5</span>, .<span class="dv">95</span>, .<span class="dv">99</span>),</span>
+<span id="cb47-5"><a href=""></a>  <span class="at">na.rm =</span> <span class="cn">TRUE</span></span>
+<span id="cb47-6"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div></div>
+</section>
+<section id="why-a-quadratic-specification" class="slide level2">
+<h2>Why a quadratic specification?</h2>
+<p>Now we have built our panel with exposure variables. In Burke, Hsiang &amp; Miguel (2015), the question is:</p>
+<blockquote>
+<p>Does temperature affect economic growth?</p>
+</blockquote>
+<p>They further argue that such relationship is non-linear.</p>
+<ul>
+<li><p>Very cold countries may benefit from warming.</p></li>
+<li><p>Very hot countries may be harmed.</p></li>
+</ul>
+<p>A simple way to capture this idea is:</p>
+<p><span class="math display">\[
+\text{growth} =
+\beta_1 T +
+\beta_2 T^2
+\]</span></p>
+<ul>
+<li>Why growth?</li>
+<li>Which sign would you expect for <span class="math inline">\(\beta_2\)</span>?</li>
+</ul>
+<div class="fragment">
+<p>If <span class="math inline">\((\beta_2 &lt; 0)\)</span>, the relationship is hump-shaped. Temperature can increase growth up to a point, and reduce it afterwards.</p>
+</div>
+</section>
+<section id="empirical-specification" class="slide level2">
+<h2>Empirical specification</h2>
+<div class="smaller">
+<p><span class="math display">\[
+g_{it}
+=
+\beta_1 T_{it}
++
+\beta_2 T_{it}^2
++
+\beta_3 P_{it}
++
+\beta_4 P_{it}^2
++
+\alpha_i
++
+\lambda_t
++
+\delta_i t
++
+\gamma_i t^2
++
+\varepsilon_{it}
+\]</span></p>
+<div class="columns middle">
+<div class="column" style="width:50%;">
+<p>where:</p>
+<ul>
+<li><span class="math inline">\(g_{it}\)</span>: GDP per capita growth</li>
+<li><span class="math inline">\(T_{it}\)</span>: temperature exposure</li>
+<li><span class="math inline">\(P_{it}\)</span>: precipitation exposure</li>
+</ul>
+<h3 id="why-country-fixed-effects-alpha_i">Why country fixed effects <span class="math inline">\((\alpha_i)\)</span>?</h3>
+<div class="fragment">
+<p>To absorb time-invariant country characteristics:</p>
+<ul>
+<li>geography;</li>
+<li>institutions;</li>
+<li>culture;</li>
+<li>average climate.</li>
+</ul>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<h3 id="why-year-fixed-effects-lambda_t">Why year fixed effects <span class="math inline">\((\lambda_t)\)</span>?</h3>
+</div>
+<div class="fragment">
+<p>To absorb global shocks affecting all countries:</p>
+<ul>
+<li>oil crises;</li>
+<li>business cycles;</li>
+<li>technological change.</li>
+</ul>
+<h3 id="why-country-specific-trends-delta_i-t-gamma_i-t2">Why country-specific trends <span class="math inline">\((\delta_i t + \gamma_i t^2)\)</span>?</h3>
+</div>
+<div class="fragment">
+<p>To remove slow-moving country-specific processes.</p>
+<ul>
+<li>economic convergence;</li>
+<li>demographic transition;</li>
+<li>institutional reforms.</li>
+</ul>
+<p>We allow each country to follow its own smooth trajectory.</p>
+</div>
+</div></div>
+</div>
+</section>
+<section id="where-does-identification-come-from" class="slide level2">
+<h2>Where does identification come from?</h2>
+<p>After all these controls, the model is identified from:</p>
+<blockquote>
+<p>year-to-year climate fluctuations within a country</p>
+</blockquote>
+<p>We are not comparing:</p>
+<ul>
+<li>Italy vs Norway</li>
+<li>Brazil vs Sweden</li>
+</ul>
+<p>We are comparing:</p>
+<ul>
+<li>Italy in warmer years vs cooler years</li>
+<li>Brazil in warmer years vs cooler years</li>
+</ul>
+<p>while controlling for long-run trends and global shocks.</p>
+</section>
+<section id="estimating-the-model" class="slide level2">
+<h2>Estimating the model</h2>
+<div class="smaller">
+<div class="columns middle">
+<div class="column" style="width:50%;">
+<p>Use <code>feols()</code> to estimate the Burke specification.</p>
+<p>General syntax:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href=""></a><span class="fu">feols</span>(</span>
+<span id="cb48-2"><a href=""></a>  y <span class="sc">~</span> x1 <span class="sc">+</span> x2 <span class="sc">+</span> ... <span class="sc">|</span></span>
+<span id="cb48-3"><a href=""></a>    fe_1 <span class="sc">+</span> fe_2,</span>
+<span id="cb48-4"><a href=""></a>  <span class="at">data =</span> data,</span>
+<span id="cb48-5"><a href=""></a>  <span class="at">cluster =</span> <span class="sc">~</span>unit</span>
+<span id="cb48-6"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>For this exercise:</p>
+<ul>
+<li>dependent variable: <code>growth</code></li>
+<li>climate variables: <code>temp</code>, <code>temp^2</code>, <code>prec</code>, <code>prec^2</code></li>
+<li>country fixed effects: <code>iso3</code></li>
+<li>year fixed effects: <code>year</code></li>
+<li>cluster variable: <code>iso3</code></li>
+</ul>
+<p>To include country-specific polynomial trends, use:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href=""></a>iso3[t <span class="sc">+</span> <span class="fu">I</span>(t<span class="sc">^</span><span class="dv">2</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>which estimates, for each country, <span class="math inline">\(\alpha_i + \delta_i t + \gamma_i t^2\)</span></p>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href=""></a>m1 <span class="ot">&lt;-</span> <span class="fu">feols</span>(</span>
+<span id="cb50-2"><a href=""></a>  growth <span class="sc">~</span> temp <span class="sc">+</span> <span class="fu">I</span>(temp<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb50-3"><a href=""></a>    prec <span class="sc">+</span> <span class="fu">I</span>(prec<span class="sc">^</span><span class="dv">2</span>) <span class="sc">|</span></span>
+<span id="cb50-4"><a href=""></a>    iso3[t <span class="sc">+</span> <span class="fu">I</span>(t<span class="sc">^</span><span class="dv">2</span>)] <span class="sc">+</span> year,</span>
+<span id="cb50-5"><a href=""></a>  <span class="at">data =</span> panel,</span>
+<span id="cb50-6"><a href=""></a>  <span class="at">cluster =</span> <span class="sc">~</span>iso3</span>
+<span id="cb50-7"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Why include precipitation?</li>
+<li>Why include quadratic terms?</li>
+<li>Why cluster standard errors by country?</li>
+<li>Use <code>coef()</code> to retrieve estimated coefficients and compute the vertex of the parabola (<span class="math inline">\(v=-\beta1_/(2\beta_2)\)</span>).</li>
+<li>Is the estimated optimum close to the original ~13°?</li>
+</ul>
+</div>
+<div class="fragment">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href=""></a><span class="sc">-</span><span class="fu">coef</span>(m1)[<span class="st">"temp"</span>]<span class="sc">/</span>(<span class="dv">2</span><span class="sc">*</span><span class="fu">coef</span>(m1)[<span class="st">"I(I(temp^2))"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div></div>
+</div>
+</section>
+<section id="winsorizing---extreme-growth-episodes" class="slide level2">
+<h2>Winsorizing - Extreme growth episodes</h2>
+<div class="smaller">
+<div class="columns middle">
+<div class="column" style="width:50%;">
+<ul>
+<li>Iraq 1991 (war); Equatorial Guinea 1997 (oil discovery).</li>
+<li>Other possible outliers from political collapses, measurement errors.</li>
+</ul>
+<p>Why are outliers potentially problematic?</p>
+<div class="fragment">
+<ul>
+<li>OLS squares residuals. Large observations therefore receive disproportionate weight.</li>
+<li>Our specification also contains quadratic climate terms. Extreme observations may therefore have a strong influence on the estimated curve.</li>
+</ul>
+<p>Solution: <strong>winsorize growth</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href=""></a>panel2 <span class="ot">&lt;-</span> panel <span class="sc">%&gt;%</span></span>
+<span id="cb52-2"><a href=""></a>  <span class="fu">mutate</span>(</span>
+<span id="cb52-3"><a href=""></a>    <span class="at">growth_w =</span> <span class="fu">pmax</span>(</span>
+<span id="cb52-4"><a href=""></a>      <span class="fu">pmin</span>(growth, <span class="dv">15</span>),</span>
+<span id="cb52-5"><a href=""></a>      <span class="sc">-</span><span class="dv">15</span></span>
+<span id="cb52-6"><a href=""></a>    )</span>
+<span id="cb52-7"><a href=""></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<p>Re-estimate the model:</p>
+</div>
+<div class="fragment">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href=""></a>m2 <span class="ot">&lt;-</span> <span class="fu">feols</span>(</span>
+<span id="cb53-2"><a href=""></a>  growth_w <span class="sc">~</span> temp <span class="sc">+</span> <span class="fu">I</span>(temp<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb53-3"><a href=""></a>    prec <span class="sc">+</span> <span class="fu">I</span>(prec<span class="sc">^</span><span class="dv">2</span>) <span class="sc">|</span></span>
+<span id="cb53-4"><a href=""></a>    iso3[ t <span class="sc">+</span> <span class="fu">I</span>(t<span class="sc">^</span><span class="dv">2</span>) ] <span class="sc">+</span> year,</span>
+<span id="cb53-5"><a href=""></a>  <span class="at">data =</span> panel2,</span>
+<span id="cb53-6"><a href=""></a>  <span class="at">cluster =</span> <span class="sc">~</span>iso3</span>
+<span id="cb53-7"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><img src="par.png" width="100%"></p>
+</div>
+</div></div>
+</div>
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="lecture4_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="lecture4_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="lecture4_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="lecture4_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="lecture4_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="lecture4_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="lecture4_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="lecture4_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="lecture4_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="lecture4_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'fade',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1600,
+
+        height: 900,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>
